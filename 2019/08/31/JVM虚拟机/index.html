@@ -55,13 +55,13 @@
   };
 </script>
 
-  <meta name="description" content="Java体系 Java内存模型1. Run-Time Data Areas 运行时数据区 JAVA虚拟机定义了各种用于程序执行时的运行时数据区： a) 一些数据区是与虚拟机的生命周期一致的：创建于虚拟机开始运行时，销毁于虚拟机退出时 b) 一些数据区是与线程生命周期一致的：创建于线程创建，毁于线程推出 在数据区中： ==线程私有：Program Counter Register、JVM Sta">
+  <meta name="description" content="Java体系">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM虚拟机">
 <meta property="og:url" content="https://qinnsang.github.io/2019/08/31/JVM虚拟机/index.html">
 <meta property="og:site_name" content="qinnsang&#39;s blog">
-<meta property="og:description" content="Java体系 Java内存模型1. Run-Time Data Areas 运行时数据区 JAVA虚拟机定义了各种用于程序执行时的运行时数据区： a) 一些数据区是与虚拟机的生命周期一致的：创建于虚拟机开始运行时，销毁于虚拟机退出时 b) 一些数据区是与线程生命周期一致的：创建于线程创建，毁于线程推出 在数据区中： ==线程私有：Program Counter Register、JVM Sta">
+<meta property="og:description" content="Java体系">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://qinnsang.github.io/.io//1563978475792.png">
 <meta property="og:image" content="https://qinnsang.github.io/.io//1564068841939.png">
@@ -78,10 +78,10 @@
 <meta property="og:image" content="https://qinnsang.github.io/.io//1564197661045.png">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14211474-15d9dfb21ffa15ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
 <meta property="og:image" content="https://qinnsang.github.io/.io//1564238826806.png">
-<meta property="og:updated_time" content="2019-08-31T14:13:58.720Z">
+<meta property="og:updated_time" content="2019-08-31T14:52:10.170Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM虚拟机">
-<meta name="twitter:description" content="Java体系 Java内存模型1. Run-Time Data Areas 运行时数据区 JAVA虚拟机定义了各种用于程序执行时的运行时数据区： a) 一些数据区是与虚拟机的生命周期一致的：创建于虚拟机开始运行时，销毁于虚拟机退出时 b) 一些数据区是与线程生命周期一致的：创建于线程创建，毁于线程推出 在数据区中： ==线程私有：Program Counter Register、JVM Sta">
+<meta name="twitter:description" content="Java体系">
 <meta name="twitter:image" content="https://qinnsang.github.io/.io//1563978475792.png">
   <link rel="canonical" href="https://qinnsang.github.io/2019/08/31/JVM虚拟机/">
 
@@ -284,7 +284,7 @@
                 
               
 
-              <time title="创建时间：2019-08-31 21:55:21 / 修改时间：22:13:58" itemprop="dateCreated datePublished" datetime="2019-08-31T21:55:21+08:00">2019-08-31</time>
+              <time title="创建时间：2019-08-31 21:55:21 / 修改时间：22:52:10" itemprop="dateCreated datePublished" datetime="2019-08-31T21:55:21+08:00">2019-08-31</time>
             </span>
           
             
@@ -332,9 +332,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <a id="more"></a>
+        <h1 id="Java体系"><a href="#Java体系" class="headerlink" title="Java体系"></a>Java体系</h1><a id="more"></a>
 
-<h1 id="Java体系"><a href="#Java体系" class="headerlink" title="Java体系"></a>Java体系</h1><p><img src="/.io//1563978475792.png" alt="Java体系图"></p>
+<p><img src="/.io//1563978475792.png" alt="Java体系图"></p>
 <h1 id="Java内存模型"><a href="#Java内存模型" class="headerlink" title="Java内存模型"></a>Java内存模型</h1><h2 id="1-Run-Time-Data-Areas-运行时数据区"><a href="#1-Run-Time-Data-Areas-运行时数据区" class="headerlink" title="1. Run-Time Data Areas 运行时数据区"></a>1. Run-Time Data Areas 运行时数据区</h2><p><img src="/.io//1564068841939.png" alt="1564068841939"></p>
 <p>JAVA虚拟机定义了各种用于程序执行时的运行时数据区：</p>
 <p>a) 一些数据区是与<strong>虚拟机的生命周期</strong>一致的：创建于虚拟机开始运行时，销毁于虚拟机退出时</p>
