@@ -79,7 +79,7 @@
 <meta property="og:image" content="https://qinnsang.github.io/2019/08/31/JVM虚拟机/1564197661045.png">
 <meta property="og:image" content="https://qinnsang.github.io/2019/08/31/JVM虚拟机/dfad.png">
 <meta property="og:image" content="https://qinnsang.github.io/2019/08/31/JVM虚拟机/1564238826806.png">
-<meta property="og:updated_time" content="2019-09-01T06:17:41.075Z">
+<meta property="og:updated_time" content="2019-09-01T06:26:36.698Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM虚拟机">
 <meta name="twitter:description" content="讲述Java内存模型">
@@ -323,7 +323,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-01 14:17:41" itemprop="dateModified" datetime="2019-09-01T14:17:41+08:00">2019-09-01</time>
+                <time title="修改时间：2019-09-01 14:26:36" itemprop="dateModified" datetime="2019-09-01T14:26:36+08:00">2019-09-01</time>
               </span>
             
           
@@ -390,12 +390,12 @@
 <p>a) 一些数据区是与<strong>虚拟机的生命周期</strong>一致的：创建于虚拟机开始运行时，销毁于虚拟机退出时</p>
 <p>b) 一些数据区是与<strong>线程生命周期</strong>一致的：创建于线程创建，毁于线程推出</p>
 <p>在数据区中：</p>
-<p>==线程私有：Program Counter Register、JVM Stacks、Native Method Stacks==（无GC）</p>
-<p>==线程共享：Heap、Method Area==（有GC）</p>
+<p><strong>线程私有：Program Counter Register、JVM Stacks、Native Method Stacks（无GC）</strong></p>
+<p><strong>线程共享：Heap、Method Area（有GC）</strong></p>
 <p><img src="//qinnsang.github.io/2019/08/31/JVM虚拟机/1564193357157.png" alt="1564193357157"></p>
 <h3 id="1-1-Program-Counter-Register-程序计数器"><a href="#1-1-Program-Counter-Register-程序计数器" class="headerlink" title="1.1 Program Counter Register 程序计数器"></a>1.1 Program Counter Register 程序计数器</h3><p>程序计数器是指CPU中的寄存器</p>
 <ul>
-<li><p>执行java方法时，程序计数器是有值的，存储的是==当前执行的字节码指令的地址==（保存下一条指令的所在存储单元的地址）CPU根据保存的指令地址找到指令，然后在执行。目的是防止多线程执行时出现干扰，单线程的话可以没有PC</p>
+<li><p>执行java方法时，程序计数器是有值的，存储的是<strong>当前执行的字节码指令的地址（</strong>保存下一条指令的所在存储单元的地址）CPU根据保存的指令地址找到指令，然后在执行。目的是防止多线程执行时出现干扰，单线程的话可以没有PC</p>
 <p><img src="//qinnsang.github.io/2019/08/31/JVM虚拟机/webp.png" alt="img"></p>
 </li>
 <li><p>执行native本地方法时，程序计数器的值为空（Undefined）：因为native方法是java直接调用本地C/C++库进行实现，那么自然无法产生相应的字节码，并且C/C++执行时的内存分配是由自己语言决定的，而不是由JVM决定的。</p>
@@ -404,7 +404,7 @@
 </li>
 </ul>
 <h3 id="1-2-Native-Method-Stacks-本地方法栈"><a href="#1-2-Native-Method-Stacks-本地方法栈" class="headerlink" title="1.2 Native Method Stacks 本地方法栈"></a>1.2 Native Method Stacks 本地方法栈</h3><ul>
-<li><p>作用场景：在程序调用或JVM==调用本地方法==（非java语言编写，不受JVM管理）接口(Native)时候启用，即本地方法栈将会在每个线程创建的是将被分配内存</p>
+<li><p>作用场景：在程序调用或JVM<strong>调用本地方法</strong>（非java语言编写，不受JVM管理）接口(Native)时候启用，即本地方法栈将会在每个线程创建的是将被分配内存</p>
 </li>
 <li><p>存储的是<strong>本地方法的数据</strong></p>
 <p><img src="//qinnsang.github.io/2019/08/31/JVM虚拟机/1564061794205.png" alt="1564061794205"></p>
@@ -419,8 +419,8 @@
 </ul>
 <h3 id="1-3-JVM-Stacks-虚拟机栈"><a href="#1-3-JVM-Stacks-虚拟机栈" class="headerlink" title="1.3 JVM Stacks 虚拟机栈"></a>1.3 JVM Stacks 虚拟机栈</h3><p>每个Java虚拟机线程都有一个私有的Java虚拟机栈，JVM栈是运行的单位</p>
 <ul>
-<li>生命周期：因栈是线程私有的，所以与线程的生命周期一致：==随线程创建，随线程结束销毁==</li>
-<li>存储数据：Java虚拟机栈中==存储栈帧==：当前线程运行时所需要的局部变量、对象的引用、计算的结果、返回信息等</li>
+<li>生命周期：因栈是线程私有的，所以与线程的生命周期一致：<strong>随线程创建，随线程结束销毁</strong></li>
+<li>存储数据：Java虚拟机栈中<strong>存储栈帧</strong>：当前线程运行时所需要的局部变量、对象的引用、计算的结果、返回信息等</li>
 <li>栈的行为：压入(push)和弹出(pop)栈帧</li>
 <li>存取类型：压入和弹出栈帧采用FILO先进后出，因为是调用方法总是先完成。 </li>
 <li>Java虚拟机栈的内存不需要是连续的</li>
@@ -446,14 +446,14 @@
 <li>局部变量使用索引来表示的，第一个局部变量的索引是0。一个整数可以当做一个索引，只要整数在[0，局部变量表的长度] 区域内。一个long、double类型的值占据两个连续的局部变量</li>
 <li>虚拟机通过局部变量在方法调用过程中传递参数：<ul>
 <li>在类方法调用时，任何参数都在从局部变量0开始的连续局部变量中传递。</li>
-<li>在实例方法调用中，局部变量0始终用于存储==对调用实例方法的对象的引用==（这在Java编程语言中）。 随后，任何参数都在从局部变量1开始的连续局部变量中传递。</li>
+<li>在实例方法调用中，局部变量0始终用于<strong>存储对调用实例方法的对象的引用</strong>（这在Java编程语言中）。 随后，任何参数都在从局部变量1开始的连续局部变量中传递。</li>
 </ul>
 </li>
 </ul>
 <h5 id="1-3-1-2-operand-stack-操作数栈"><a href="#1-3-1-2-operand-stack-操作数栈" class="headerlink" title="1.3.1.2 operand stack 操作数栈"></a>1.3.1.2 operand stack 操作数栈</h5><ul>
 <li><p>每个栈帧包含一个采用LIFO先进后出的操作数栈</p>
 </li>
-<li><p>存储执行过程中的结果：Java虚拟机提供指令，将局部变量或常量的==值或内容加载到操作数栈==上（不是局部变量和常量加载到操作数栈中）</p>
+<li><p>存储执行过程中的结果：Java虚拟机提供指令，将局部变量或常量的<strong>值或内容加载到操作数栈</strong>上（不是局部变量和常量加载到操作数栈中）</p>
 <p>Java虚拟机指令从操作数栈中获取操作数，对它们进行操作，并将结果推回操作数栈中。例如：iadd指令将两个int值相加，于是将操作数栈的前两个int值相加，将结果压入栈中，并且两个int值都从操作数堆栈中弹出删除。</p>
 </li>
 <li><p>操作数栈具有相关联的深度：其中long或double类型的值占据两个单位深度，而其他类型的值占一个单位。</p>
